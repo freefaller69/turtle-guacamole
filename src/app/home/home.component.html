@@ -1,3 +1,10 @@
-<p>
-  home works!
-</p>
+<div *ngFor="let voyage of voyages$">
+  <ul>
+    <li>{{ voyage[0].description }}</li>
+    <li>{{ voyage[0].dateDepart }}</li>
+    <li>{{ voyage[0].dateArrive }}</li>
+    <li>{{ voyage[0].embarkPort }}</li>
+    <li>{{ voyage[0].disembarkPort }}</li>
+    <li>{{ voyage[0].ship }}</li>
+  </ul>
+</div>

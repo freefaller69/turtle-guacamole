@@ -1,12 +1,9 @@
-import { ApiService } from './../api.service';
-// import { Component, OnInit } from '@angular/core';
-
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { interval, timer, fromEvent, Observable, noop } from 'rxjs';
-import { createHttpObservable } from '../common/util';
-import { map } from 'rxjs/operators';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { environment } from '../../environments/environment';
+import { ApiService } from './../api.service';
+import { Voyage } from './../voyage.model';
 
 const API_URL = environment.apiUrl;
 
@@ -15,30 +12,26 @@ const API_URL = environment.apiUrl;
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
-  cruises;
+export class HomeComponent implements OnInit, OnDestroy {
+  voyages$: Voyage[] = [];
+  cruises = [];
+  private cruisesSub: Subscription;
 
-  constructor() { }
-
-  // ngOnInit() {
-  //   this.cruises = this.api.getCruises();
-  //   console.log(this.cruises);
-  // }
+  constructor(
+    private api: ApiService
+  ) {}
 
   ngOnInit() {
-
-    const http$ = createHttpObservable(API_URL);
-
-    const cruises$ = http$
-      .pipe(
-        map(res => Object.values(res['payload']))
-      );
-
-    cruises$.subscribe(
-      cruises => console.log(cruises),
-      noop,
-      () => console.log('completed')
-    );
+    this.api.getCruises();
+    this.api.getCruiseUpdatedListener()
+      .subscribe((cruises: Voyage[]) => {
+        console.log('home cruises', cruises);
+        this.voyages$ = cruises;
+        console.log('observable cruises', this.voyages$);
+      });
   }
 
+  ngOnDestroy() {
+    this.cruisesSub.unsubscribe();
+  }
 }
