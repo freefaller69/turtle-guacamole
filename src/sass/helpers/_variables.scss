@@ -4,7 +4,19 @@
 
   --black: hsla(0, 0%, 0%, 1); // #000000
 
+  --grey-1: hsla(0, 0%, 73%, 1);
+  --grey-2: hsla(0, 0%, 40%, 1);
+
+  --dark-blue: hsla(212, 75%, 24%, 1);
+
+  --gold: hsla(40, 100%, 70%, 1);
+  --gold-hover: hsla(42, 98%, 53%, 1);
+
   --default-font: hsla(232, 48%, 24%, 1); // #20285b
 
   --navbar-background: hsla(229, 44%, 30%, 1); // #2B386F
+
+  --gradient-light: var(--white);
+  --gradient-dark: hsla(219, 50%, 95%, 1);
+  --voyages-gradient: linear-gradient(var(--gradient-light), var(--gradient-dark));
 }

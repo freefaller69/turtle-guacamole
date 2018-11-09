@@ -28,12 +28,13 @@ export class ApiService {
                 return {
                   id: voyage.itinerary._id,
                   description: voyage.itinerary.description,
-                  currency: voyage.currency,
+                  currency: voyage.currencySymbol,
                   dateDepart: voyage.dateDepart,
                   dateArrive: voyage.dateArrive,
                   ship: voyage.ship.displayName,
                   embarkPort: voyage.embarkPort.portName,
                   disembarkPort: voyage.disembarkPort.portName,
+                  lowestVoyagePrice: voyage.lowestVoyagePrice,
                   staterooms: voyage.stateRooms
                 };
               });
@@ -42,7 +43,9 @@ export class ApiService {
         })
       )
       .subscribe(transformedCruises => {
-        this.cruises = transformedCruises;
+        // console.log('transformed service', transformedCruises);
+        this.cruises = [].concat(...transformedCruises);
+        // console.log('service cruises', this.cruises[0].staterooms[0].priceBlocks);
         this.cruisesUpdated.next([...this.cruises]);
       });
   }

@@ -7,5 +7,6 @@ export interface Voyage {
   ship: string;
   embarkPort: string;
   disembarkPort: string;
+  lowestVoyagePrice: number;
   staterooms: object[];
 }

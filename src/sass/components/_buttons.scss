@@ -1,0 +1,36 @@
+.btn {
+  background-color: var(--white);
+  border: 1px solid currentColor;
+  color: var(--default-font);
+  text-transform: uppercase;
+  font-weight: 600;
+  height: 4.5rem;
+  cursor: pointer;
+
+  &_itinerary {
+    width: 18rem;
+    margin-top: 1rem;
+  }
+
+  &_room,
+  &_book {
+    max-width: 13rem;
+    padding: 1.25rem 1.75rem;
+  }
+
+  &_itinerary:hover,
+  &_room:hover {
+    color: var(--white);
+    background-color: var(--default-font);
+  }
+
+  &_book {
+    background-color: var(--gold);
+    margin-top: 2.2rem;
+    margin-left: .75rem;
+
+    &:hover {
+      background-color: var(--gold-hover);
+    }
+  }
+}

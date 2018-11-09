@@ -1,0 +1,113 @@
+.voyage {
+  margin: 2rem;
+  border: 1px solid var(--black);
+
+  &_info {
+    padding: 1.5rem;
+  }
+
+  &_overview {
+    width: 100%;
+    background-image: var(--voyages-gradient);
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+    padding-bottom: 3rem;
+
+    @media screen and (max-width: 650px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &_itinerary {
+    display: flex;
+
+    @media screen and (max-width: 700px) {
+      flex-direction: column;
+      align-content: center;
+    }
+  }
+
+  &_departure {
+    margin-left: 2.5rem;
+
+    @media screen and (max-width: 700px) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &_date {
+    padding-left: 1rem;
+    font-size: 1.9rem;
+    line-height: 2.4;
+    font-weight: 600;
+  }
+
+  &_ship {
+    line-height: 2.4;
+  }
+
+  &_starting-at {
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-text {
+      font-size: 1.5rem;
+    }
+
+    &-link {
+      font-size: 1.2rem;
+      color: var(--default-font);
+      line-height: 2.5rem;
+      text-decoration: underline;
+      display: block;
+      margin: 1.5rem;
+    }
+  }
+
+  &_price {
+    font-size: 3.5rem;
+    line-height: 1.2;
+  }
+
+  &_footer {
+    font-size: 1rem;
+    color: var(--grey-2);
+    padding: 2rem;
+
+    &-link {
+      color: var(--dark-blue);
+      font-weight: 600;
+      text-decoration: underline;
+    }
+  }
+
+  .staterooms {
+
+    &_list {
+      padding: 1.5rem;
+      width: 100%;
+      outline: 1px solid var(--grey-1);
+      border: .5rem solid var(--white);
+      background-color: var(--gradient-dark);
+      font-size: 1.4rem;
+      color: var(--black);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    &_room {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      padding: 1.5rem 1rem;
+    }
+  }
+}
