@@ -22,9 +22,7 @@ export class VoyagesComponent implements OnInit, OnDestroy {
     this.api.getCruises();
     this.api.getCruiseUpdatedListener()
       .subscribe((cruises: Voyage[]) => {
-        console.log('voyages cruises', cruises);
         this.voyages$ = cruises;
-        console.log('voyages x', this.voyages$);
       });
   }
 
