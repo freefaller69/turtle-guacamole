@@ -4,11 +4,11 @@
 
   &_info {
     padding: 1.5rem;
+    background-image: var(--voyages-gradient);
   }
 
   &_overview {
     width: 100%;
-    background-image: var(--voyages-gradient);
     display: flex;
     justify-content: space-between;
     align-content: flex-start;
@@ -17,15 +17,7 @@
     @media screen and (max-width: 650px) {
       flex-direction: column;
       align-items: center;
-    }
-  }
-
-  &_itinerary {
-    display: flex;
-
-    @media screen and (max-width: 700px) {
-      flex-direction: column;
-      align-content: center;
+      text-align: center;
     }
   }
 
@@ -42,6 +34,10 @@
     font-size: 1.9rem;
     line-height: 2.4;
     font-weight: 600;
+
+    @media screen and (max-width: 650px) {
+      padding-left: 0;
+    }
   }
 
   &_ship {
@@ -65,6 +61,7 @@
       text-decoration: underline;
       display: block;
       margin: 1.5rem;
+      text-align: center;
     }
   }
 
@@ -86,9 +83,7 @@
   }
 
   .staterooms {
-
-    &_list {
-      padding: 1.5rem;
+    padding: 1.5rem;
       width: 100%;
       outline: 1px solid var(--grey-1);
       border: .5rem solid var(--white);
@@ -96,6 +91,7 @@
       font-size: 1.4rem;
       color: var(--black);
 
+    &_list {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -103,6 +99,7 @@
     }
 
     &_room {
+      min-width: 12rem;
       display: flex;
       flex-direction: column;
       align-items: center;

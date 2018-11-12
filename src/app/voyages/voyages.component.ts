@@ -11,6 +11,7 @@ import { Voyage } from '../voyage.model';
   styleUrls: ['./voyages.component.scss']
 })
 export class VoyagesComponent implements OnInit, OnDestroy {
+  room = 0;
   voyages$: Voyage[] = [];
   private cruisesSub: Subscription;
 
@@ -24,6 +25,12 @@ export class VoyagesComponent implements OnInit, OnDestroy {
       .subscribe((cruises: Voyage[]) => {
         this.voyages$ = cruises;
       });
+  }
+
+  onClick(idx) {
+    console.log(idx);
+    this.room = idx;
+    console.log(this.room);
   }
 
   ngOnDestroy() {

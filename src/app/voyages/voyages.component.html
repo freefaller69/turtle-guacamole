@@ -4,20 +4,18 @@
   </nav>
   <div class="voyage_info">
     <section class="voyage_overview">
-      <div class="voyage_itinerary">
-        <div class="itinerary-map-container">
-          <a class="itinerary-map" href="#">
-            <img src="../../assets/images/world_map.jpg" alt="world map">
-            <div class="itinerary-map-text"><a href="#" class="itinerary-map-link">View Larger Map <i class="fa fa-search"></i></a></div>
-          </a>
-        </div>
-        <div class="voyage_departure">
-          <h5 class="uppercase">Departure Date:</h5>
-          <div class="voyage_date uppercase">{{ voyage.dateDepart | date: 'dd MMM yyyy' }}</div>
-          <div class="voyage_ship">Ship: <span class="emphasis">{{ voyage.ship }}</span></div>
-          <div>Departs: <span class="emphasis">{{ voyage.embarkPort }}</span></div>
-          <div>Arrives: <span class="emphasis">{{ voyage.disembarkPort }}</span></div>
-        </div>
+      <div class="itinerary-map-container">
+        <a class="itinerary-map" href="#">
+          <img src="../../assets/images/world_map.jpg" alt="view larger map">
+          <div class="itinerary-map-text"><a href="#" class="itinerary-map-link">View Larger Map <i class="fa fa-search"></i></a></div>
+        </a>
+      </div>
+      <div class="voyage_departure">
+        <h5 class="uppercase">Departure Date:</h5>
+        <div class="voyage_date uppercase">{{ voyage.dateDepart | date: 'dd MMM yyyy' }}</div>
+        <div class="voyage_ship">Ship: <span class="emphasis">{{ voyage.ship }}</span></div>
+        <div>Departs: <span class="emphasis">{{ voyage.embarkPort }}</span></div>
+        <div>Arrives: <span class="emphasis">{{ voyage.disembarkPort }}</span></div>
       </div>
       <div class="voyage_starting-at">
         <div class="voyage_starting-at-text">From</div>
@@ -29,14 +27,14 @@
     </section>
     <section class="staterooms">
       <div class="staterooms_list">
-        <div class="staterooms_room" *ngFor="let stateroom of voyage.staterooms">
+        <div class="staterooms_room" *ngFor="let stateroom of voyage.staterooms; index as i;">
           <div>{{ stateroom._id }}</div>
           <button class="btn btn_room" *ngIf="stateroom.priceBlocks[0].currencyCode !== 'SOLD_OUT'">{{ voyage.currency }}{{ stateroom.priceBlocks[0].prices[0].fare }} *</button>
-          <button class="btn btn_room" *ngIf="stateroom.priceBlocks[0].currencyCode === 'SOLD_OUT'">SOLD OUT</button>
+          <button [disabled]="stateroom.priceBlocks[0].currencyCode === 'SOLD_OUT'" class="btn btn_room-sold-out" *ngIf="stateroom.priceBlocks[0].currencyCode === 'SOLD_OUT'">SOLD OUT</button>
         </div>
         <button class="btn btn_book">Book Now</button>
-        <div><a href="#" class="voyage_starting-at-link">*Plus Taxes, Fees and Port Expenses {{ voyage.currency }}{{ voyage.staterooms[0].priceBlocks[0].govtFeesAndTaxes }}</a></div>
       </div>
+      <div><a href="#" class="voyage_starting-at-link">*Plus Taxes, Fees and Port Expenses {{ voyage.currency }}{{ voyage.staterooms[0].priceBlocks[0].govtFeesAndTaxes }}</a></div>
     </section>
 <footer class="voyage_footer">*The deposit on this cruise is fully non-refundable. Fares shown are in US$, per person,
   based on double occupancy. Fares reflect best fare available for a stateroom in each category, on one date that this

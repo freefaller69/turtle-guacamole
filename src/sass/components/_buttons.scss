@@ -16,6 +16,12 @@
   &_book {
     max-width: 13rem;
     padding: 1.25rem 1.75rem;
+
+    &-sold-out {
+      background-color: var(--grey-1);
+      min-width: 10rem;
+      max-width: 13rem;
+    }
   }
 
   &_itinerary:hover,
@@ -32,5 +38,15 @@
     &:hover {
       background-color: var(--gold-hover);
     }
+
+    @media screen and (max-width: 500px) {
+      font-size: 1.6rem;
+    }
   }
+
+}
+
+.active {
+  color: var(--white);
+  background-color: var(--default-font);
 }
