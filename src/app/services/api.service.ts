@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { environment } from '../environments/environment';
-import { Voyage } from './home/voyages/voyage.model';
+import { environment } from '../../environments/environment';
+import { Voyage } from '../home/voyages/voyage.model';
 
 const API_URL = environment.apiUrl;
 
