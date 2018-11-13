@@ -5,13 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { VoyagesComponent } from './voyages/voyages.component';
+import { VoyagesComponent } from './home/voyages/voyages.component';
+import { StateroomComponent } from './home/voyages/stateroom/stateroom.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    VoyagesComponent
+    VoyagesComponent,
+    StateroomComponent
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ApiService } from '../api.service';
+import { Voyage } from './voyages/voyage.model';
 import { Subscription } from 'rxjs';
-
-import { environment } from '../../environments/environment';
-import { ApiService } from './../api.service';
-import { Voyage } from './../voyage.model';
-
-const API_URL = environment.apiUrl;
 
 @Component({
   selector: 'app-home',
@@ -15,19 +11,22 @@ const API_URL = environment.apiUrl;
 export class HomeComponent implements OnInit, OnDestroy {
   voyages$: Voyage[] = [];
   private cruisesSub: Subscription;
+  activeStateroom = 0;
 
   constructor(
     private api: ApiService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.api.getCruises();
     this.api.getCruiseUpdatedListener()
       .subscribe((cruises: Voyage[]) => {
-        // console.log('home cruises', cruises);
         this.voyages$ = cruises;
-        // console.log('voyages', this.voyages$);
       });
+  }
+
+  currentIdx(e) {
+    this.activeStateroom = e;
   }
 
   ngOnDestroy() {

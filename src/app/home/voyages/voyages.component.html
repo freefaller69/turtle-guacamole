@@ -1,4 +1,4 @@
-<div class="voyage" *ngFor="let voyage of voyages$">
+<div class="voyage">
   <nav class="navbar">
     <h2>{{ voyage.description }}</h2>
   </nav>
@@ -27,11 +27,14 @@
     </section>
     <section class="staterooms">
       <div class="staterooms_list">
-        <div class="staterooms_room" *ngFor="let stateroom of voyage.staterooms; index as i;">
-          <div>{{ stateroom._id }}</div>
-          <button class="btn btn_room" *ngIf="stateroom.priceBlocks[0].currencyCode !== 'SOLD_OUT'">{{ voyage.currency }}{{ stateroom.priceBlocks[0].prices[0].fare }} *</button>
-          <button [disabled]="stateroom.priceBlocks[0].currencyCode === 'SOLD_OUT'" class="btn btn_room-sold-out" *ngIf="stateroom.priceBlocks[0].currencyCode === 'SOLD_OUT'">SOLD OUT</button>
-        </div>
+        <stateroom
+          *ngFor="let stateroom of voyage.staterooms; index as i;"
+          [stateroom]='stateroom'
+          [currency]='voyage.currency'
+          [room]='i'
+          (idxChange)='currentIdx($event)'
+          [active]='activeStateroom'>
+        </stateroom>
         <button class="btn btn_book">Book Now</button>
       </div>
       <div><a href="#" class="voyage_starting-at-link">*Plus Taxes, Fees and Port Expenses {{ voyage.currency }}{{ voyage.staterooms[0].priceBlocks[0].govtFeesAndTaxes }}</a></div>

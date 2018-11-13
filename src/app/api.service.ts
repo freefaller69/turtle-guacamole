@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '../environments/environment';
-import { Voyage } from './voyage.model';
+import { Voyage } from './home/voyages/voyage.model';
 
 const API_URL = environment.apiUrl;
 
