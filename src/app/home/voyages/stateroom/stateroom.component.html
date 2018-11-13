@@ -1,3 +1,5 @@
-<div>{{ stateroom._id }}</div>
-<button class="btn btn_room" [class.active]="active === room" (click)="setActive(room)" *ngIf="stateroom.priceBlocks[0].currencyCode !== 'SOLD_OUT'">{{ currency }}{{ stateroom.priceBlocks[0].prices[0].fare }} *{{ active }}</button>
-<button [disabled]="stateroom.priceBlocks[0].currencyCode === 'SOLD_OUT'" class="btn btn_room-sold-out" *ngIf="stateroom.priceBlocks[0].currencyCode === 'SOLD_OUT'">SOLD OUT</button>
+<div class="staterooms_room">
+  <div>{{ stateroom._id }}</div>
+  <button class="btn btn_room" [class.active]="active === room" (click)="setActive(room)" *ngIf="stateroom.priceBlocks[0].currencyCode !== 'SOLD_OUT'">{{ currency }}{{ stateroom.priceBlocks[0].prices[0].fare }} *</button>
+  <button [disabled]="stateroom.priceBlocks[0].currencyCode === 'SOLD_OUT'" class="btn btn_room-sold-out" *ngIf="stateroom.priceBlocks[0].currencyCode === 'SOLD_OUT'">SOLD OUT</button>
+</div>
